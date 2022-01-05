@@ -1,0 +1,96 @@
+cat <<'mySiteOvpn' > /home/vps/public_html/dimzyyy/index.html
+<!DOCTYPE html>
+<html lang="en">
+<!-- Simple OVPN Download site by DIIMZY -->
+<head>
+  <meta charset="utf-8" />
+  <title> OVPN Config Download</title>
+  <meta name="description" content="MyScriptName Server"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.3/css/mdb.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> 
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+ <link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/cf/ContactFrom_v10/vendor/bootstrap/css/bootstrap.min.css"> 
+  <link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/cf/ContactFrom_v10/fonts/font-awesome-4.7.0/css/font-awesome.min.css"> 
+  <link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/cf/ContactFrom_v10/vendor/animate/animate.css"> 
+  <link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/cf/ContactFrom_v10/vendor/css-hamburgers/hamburgers.min.css"> 
+  <link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/cf/ContactFrom_v10/vendor/animsition/css/animsition.min.css"> 
+  <link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/cf/ContactFrom_v10/vendor/select2/select2.min.css"> 
+  <link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/cf/ContactFrom_v10/vendor/daterangepicker/daterangepicker.css"> 
+  <link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/cf/ContactFrom_v10/css/util.css"> 
+  <link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/cf/ContactFrom_v10/css/main.css">
+  </head>
+  <body>
+    <style>.corona-alert{padding:20px;background-color:#031b4e;color:#fff}.corona-closebtn{margin-left:15px;color:#fff;font-weight:bold;float:right;font-size:22px;line-height:20px;cursor:pointer;transition:.3s}.corona-closebtn:hover{color:#000}.corona-bg-primary{background-color:#007bff!important;padding:5px;border-radius:6px;margin-right:5px}.corona-bg-success{background-color:#28a745!important;padding:5px;border-radius:6px;margin-right:5px}.corona-bg-danger{background-color:#dc3545!important;padding:5px;border-radius:6px;margin-right:5px}.corona-label{display:inline-block;margin-bottom:.5rem}.corona-blink{display:inline-flex;width:20px;justify-content:center}.corona-blink01{width:14px;height:14px;background-color:red;border-radius:50%}.corona-blink02{-webkit-animation:blinking 1s cubic-bezier(.5,0,1,1) infinite alternate;animation:blinking 1s cubic-bezier(.5,0,1,1) infinite alternate}::-webkit-input-placeholder{color:#888}:-moz-placeholder{color:#888}::-moz-placeholder{color:#888}:-ms-input-placeholder{color:#888}@media only screen and (max-width:600px){.header .corona-blink{width:10px}.header .corona-blink .corona-blink01{width:10px;height:10px}}@-webkit-keyframes blinking{from{opacity:1;}to{opacity:0;}}@keyframes blinking{from{opacity:1;}to{opacity:0;}}</style>
+
+
+<script>
+var date = new Date();
+var tahun = date.getFullYear();
+var bulan = date.getMonth();
+var tanggal = date.getDate();
+switch(bulan) {
+ case 0: bulan = "Januari"; break;
+ case 1: bulan = "Februari"; break;
+ case 2: bulan = "Maret"; break;
+ case 3: bulan = "April"; break;
+ case 4: bulan = "Mei"; break;
+ case 5: bulan = "Juni"; break;
+ case 6: bulan = "Juli"; break;
+ case 7: bulan = "Agustus"; break;
+ case 8: bulan = "September"; break;
+ case 9: bulan = "Oktober"; break;
+ case 10: bulan = "November"; break;
+ case 11: bulan = "Desember"; break;
+}
+var infoTanggal = tanggal + "/" + bulan + "/" + tahun;
+
+// Daftar API Lainnya
+// https://covid19.mathdro.id/api/countries/ID
+// https://api.kawalcorona.com/indonesia/
+
+let url = 'https://coronavirus-19-api.herokuapp.com/countries/Indonesia';
+fetch(url)
+.then(res => res.json())
+.then((out) => {
+document.getElementById("corona-positif").innerHTML = 'Positif : ' + out.cases;
+document.getElementById("corona-positiftoday").innerHTML = 'Hari ini : ' + out.todayCases;
+document.getElementById("corona-positifaktif").innerHTML = 'Aktif : ' + out.active;
+document.getElementById("corona-meninggal").innerHTML = 'Meninggal : ' + out.deaths;
+document.getElementById("corona-meninggaltoday").innerHTML = 'Hari ini : ' + out.todayDeaths;
+document.getElementById("corona-sembuh").innerHTML = 'Sembuh : ' + out.recovered;
+})
+.catch(err => { throw err });
+</script>
+<!--- Akhir --->  
+  
+  
+  
+
+  
+<!-- scrip berikut sesuaikan tata letak di loginpage anda -->
+  
+<!--- Awal ---> 
+<h6>
+<div class="corona-alert">
+  <span class="corona-closebtn" onclick="this.parentElement.style.display='none';">×</span> 
+  <strong id="corona-info">Informasi Covid-19 di Indonesia <script>document.write(infoTanggal);</script><span class="corona-blink"><i class="corona-blink01 corona-blink02"></i></span></strong> 
+  <label id="corona-positif" class="corona-label corona-bg-primary"></label>
+  <label id="corona-positiftoday" class="corona-label corona-bg-primary"></label>
+  <label id="corona-positifaktif" class="corona-label corona-bg-primary"></label>
+  <label id="corona-meninggal" class="corona-label corona-bg-danger"></label>
+  <label id="corona-meninggaltoday" class="corona-label corona-bg-danger"></label>
+  <label id="corona-sembuh" class="corona-label corona-bg-success"></label>
+</div>
+</h6>
+<!--- Akhir --->
+    <div class="container justify-content-center" style="margin-top:7em;margin-bottom:5em;"><div class="col-md"><div class="view"><img src="https://openvpn.net/wp-content/uploads/openvpn.jpg" class="card-img-top"><div class="mask rgba-white-slight"></div></div><div class="card"><div class="card-body"><h5 class="card-title">Config List</h5><br /><ul class="list-group"><li class="list-group-item justify-content-between align-items-center" style="margin-bottom:1em;"><p>TCP 1199 <span class="badge light-blue darken-4">Android/iOS</span><br /><small> Untuk Payload + Proxy </small></p><a class="btn btn-outline-success waves-effect btn-sm" href="http://52.163.240.136:81/client-tcp-1199.ovpn" style="float:right;"><i class="fa fa-download"></i> Download</a></li><li class="list-group-item justify-content-between align-items-center" style="margin-bottom:1em;"><p> UDP 25000 <span class="badge light-blue darken-4">PC/Modem</span><br /><small> Support Wilcard Domain </small></p><a class="btn btn-outline-success waves-effect btn-sm" href="http://52.163.240.136:81/client-udp-25000.ovpb" style="float:right;"><i class="fa fa-download"></i> Download</a></li><li class="list-group-item justify-content-between align-items-center" style="margin-bottom:1em;"><p> SSL 992 <span class="badge light-blue darken-4">Android/iOS/PC/Modem</span><br /><small> Untuk SSL/TLS </small></p><a class="btn btn-outline-success waves-effect btn-sm" href="http://52.163.240.136:81/client-ssl-992.ovpn" style="float:right;"><i class="fa fa-download"></i> Download</a></li><li class="list-group-item justify-content-between align-items-center" style="margin-bottom:1em;"><p> Websocket Cloudflare <span class="badge light-blue darken-4">Android/iOS/PC</span><br /><small> Websocket Edukasi Dan Lainnya.</small></p><a class="btn btn-outline-success waves-effect btn-sm" href="http://52.163.240.136:81/client-ws-2086.ovpn" style="float:right;"><i class="fa fa-download"></i> Download</a></li></ul></div></div></div></div><center> 
+      <div class="card-footer">
+        2016-2021 ©✰DIMZY✰ | Made with
+       <i class="fa fa-heart text-danger"></i>
+      </div> 
+     </center></body></html>
+mySiteOvpn
